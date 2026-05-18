@@ -10,9 +10,9 @@
   <script>
     let popupWindow;
 
-    function openAndClosePopup() {
+    function openAndClosePopup(page) {
         // 1. Open the webpage in a popup
-        popupWindow = window.open('https://example.com', 'myPopup', 'width=600,height=600');
+        popupWindow = window.open(page, 'myPopup', 'width=600,height=600');
     
         // 2. Perform actions (e.g., wait 3 seconds, then close)
         setTimeout(() => {
@@ -21,11 +21,13 @@
                 
                 // 3. Open it again after a delay
                 setTimeout(() => {
-                    popupWindow = window.open('https://example.com', 'myPopup', 'width=600,height=600');
+                    popupWindow = window.open(page, 'myPopup', 'width=600,height=600');
                 }, 100); // .1 second delay before reopening
             }
         }, 3000);
     }
+
+    openAndClosePopup(prompt(page, 'https://www.example.com'))
   </script>
   <script>
     if ('serviceWorker' in navigator) {
