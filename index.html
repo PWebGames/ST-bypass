@@ -1,0 +1,43 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Link to the Web App Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  <!-- Theme color for mobile browser bars -->
+  <meta name="theme-color" content="#317EFB">
+  <title>Screentime Bypass</title>
+</head>
+<body>
+  <script>
+    let popupWindow;
+
+    function openAndClosePopup() {
+        // 1. Open the webpage in a popup
+        popupWindow = window.open('https://example.com', 'myPopup', 'width=600,height=600');
+    
+        // 2. Perform actions (e.g., wait 3 seconds, then close)
+        setTimeout(() => {
+            if (popupWindow && !popupWindow.closed) {
+                popupWindow.close(); // Closes the popup
+                
+                // 3. Open it again after a delay
+                setTimeout(() => {
+                    popupWindow = window.open('https://example.com', 'myPopup', 'width=600,height=600');
+                }, 100); // .1 second delay before reopening
+            }
+        }, 3000);
+    }
+  </script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('Service Worker registered with scope:', registration.scope);
+          })
+          .catch(error => {
+            console.error('Service Worker registration failed:', error);
+          });
+      });
+    }
+  </script>
+</body>
