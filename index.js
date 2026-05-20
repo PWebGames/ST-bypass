@@ -1,7 +1,7 @@
 const page = prompt("page", "https://www.example.com");
 
 function redirect(page) {
-  window.href = page;
+  window.location.href = page;
 }
 
 document.addEventListener("visibilitychange", () => {
