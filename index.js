@@ -13,4 +13,6 @@ document.addEventListener("visibilitychange", () => {
   }
 });
 
-redirect(page);
+setTimeout(() => {
+  redirect(page);
+}, 500);
