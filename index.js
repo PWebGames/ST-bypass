@@ -14,5 +14,5 @@ document.addEventListener("visibilitychange", () => {
 });
 
 setTimeout(() => {
-  redirect(page);
+  if(page != "install") {redirect(page)}
 }, 500);
