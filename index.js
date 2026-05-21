@@ -1,18 +1,18 @@
 const page = prompt("page", "https://www.example.com");
 
-function redirect(page) {
-  window.location.href = page;
+function redirect(page,delay) {
+  setTimeout(() => {
+    window.location.href = page;
+  }, delay);
 }
 
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") {
     console.log("User has returned to the tab!");
-    redirect(page);
+    redirect(page,750);
   } else {
     console.log("User has left the tab.");
   }
 });
 
-setTimeout(() => {
-  if(page != "install") {redirect(page)}
-}, 500);
+if(page != "install") {redirect(page, 0)}
